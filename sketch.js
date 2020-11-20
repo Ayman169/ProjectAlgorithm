@@ -1,40 +1,33 @@
-var obj1, obj2;
+var ball, bat;
 
 function setup(){
 
 createCanvas(600,600);
 
-obj1 = createSprite(300,300,100,50);
-obj2 = createSprite(100,80,50,50);
+ball = createSprite(100,50,100,50);
+bat = createSprite(400,450,50,50);
 
-obj1.shapeColor= "red"; 
-obj2.shapeColor = "blue";
+ball.shapeColor= "red"; 
+bat.shapeColor = "blue";
 
-obj1.debug = true;
-obj2.debug = true; 
+ball.debug = true;
+bat.debug = true; 
+
+ball.velocityX=1;
+ball.velocityY=1;
+
+bat.velocityX=-1;
+bat.velocityY=-1;
 }
+
 
 function draw(){
 background(0);
 
-obj2.x = mouseX;
-obj2.y = mouseY;
-
-console.log(obj1.x - obj2.x);
-                 
-if(obj1.x - obj2.x <= obj1.width/2 + obj2.width/2 
- && obj2.x - obj1.x <= obj1.width/2 + obj2.width/2 
- && obj1.y-obj2.y <= obj1.height/2 + obj2.height/2
- && obj2.y-obj1.y <= obj1.height/2+ obj2.height/2){
-
-obj1.shapeColor= "pink"; 
- obj2.shapeColor = "pink"; 
-}
-
-else{ 
-obj1.shapeColor= "red"; 
-obj2.shapeColor = "blue"; 
-}
+//bat.x = mouseX;
+//bat.y = mouseY;
+                
+bounceOff(bat,ball);
 
 drawSprites(); 
   }
